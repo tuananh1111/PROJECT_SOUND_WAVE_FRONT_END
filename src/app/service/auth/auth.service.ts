@@ -4,6 +4,8 @@ import {UserToken} from '../../model/user-token';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {map} from 'rxjs/operators';
+import {User} from '../../model/user';
+
 
 const API_URL = `${environment.apiUrl}`;
 
@@ -33,6 +35,12 @@ export class AuthService {
         return user;
       }));
   }
+  // @ts-ignore
+  register(user: User): Observable<any> {
+    return this.http.post<User>(API_URL + '/register', user );
+  }
+  // checkUserName(userName: string) {
+  // }
 
   logout() {
     localStorage.removeItem('user');

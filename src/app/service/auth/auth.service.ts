@@ -39,8 +39,9 @@ export class AuthService {
   register(user: User): Observable<any> {
     return this.http.post<User>(API_URL + '/register', user );
   }
-  // checkUserName(userName: string) {
-  // }
+  checkUserName(userName: string): Observable<any> {
+    return this.http.get(API_URL + '/register/check');
+  }
 
   logout() {
     localStorage.removeItem('user');
